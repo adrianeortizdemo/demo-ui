@@ -1,2 +1,1 @@
-# demo-ui
-Git project for DEMO UI Project
+# Qase Demo UI
