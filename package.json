@@ -1,0 +1,20 @@
+{
+  "name": "demo-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "test": "npx cypress run"
+},
+  "repository": {
+    "type": "git",
+    "url": "git@github-qase:adrianeortizdemo/demo-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.3.2",
+    "cypress-qase-reporter": "^2.3.0"
+  }
+}
