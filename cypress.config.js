@@ -1,25 +1,36 @@
-// cypress.config.js
-const { defineConfig } = require('cypress');
+import cypress from 'cypress';
 
-module.exports = defineConfig({
-  e2e: {
-    // Run your specs under cypress/integration/*.cy.js
-    specPattern: 'cypress/integration/**/*.cy.js',
-    // We don’t need any supportFile for this demo
-    supportFile: false,
+module.exports = cypress.defineConfig({
+  reporter: 'cypress-multi-reporters',
+  reporterOptions: {
+    reporterEnabled: 'cypress-qase-reporter',
+    cypressQaseReporterReporterOptions: {
+      debug: true,
 
-    setupNodeEvents(on, config) {
-      // Hook in the Qase reporter
-      require('cypress-qase-reporter/plugin')(on, config);
-      return config;
+      testops: {
+
+        project: 'DEMOUI',
+        uploadAttachments: true,
+
+        run: {
+          complete: true,
+        },
+        useV2: true,
+      },
+
+      framework: {
+        cypress: {
+          screenshotsFolder: 'cypress/screenshots',
+        },
+      },
     },
   },
-
-  // Tell Cypress to use the Qase reporter
-  reporter: 'cypress-qase-reporter',
-  reporterOptions: {
-    apiToken: process.env.QASE_API_TOKEN,
-    projectCode: 'DEMOUI',    // ← your actual project code
-    logging: true,
+  video: false,
+  screenshotOnRunFailure: true,
+  e2e: {
+    setupNodeEvents(on, config) {
+      require('cypress-qase-reporter/plugin')(on, config);
+      require('cypress-qase-reporter/metadata')(on);
+    },
   },
 });
