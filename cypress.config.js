@@ -11,7 +11,7 @@ module.exports = defineConfig({
 
       testops: {
 
-        project: 'DEMOUI',
+        project: 'DEMO',
         uploadAttachments: true,
 
         run: {
